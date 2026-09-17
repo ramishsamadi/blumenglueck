@@ -63,6 +63,9 @@ body { overflow-x:hidden; color:var(--text); font-family:Inter,"Segoe UI",sans-s
 .heart-layer { position:fixed; inset:0; z-index:100; overflow:hidden; pointer-events:none; }
 .watering-heart { position:absolute; left:var(--heart-x); top:var(--heart-y); color:var(--heart-color); font-size:var(--heart-size); line-height:1; opacity:0; filter:drop-shadow(0 3px 5px #0008); transform:translate3d(0,20px,0) rotate(var(--heart-start-rotation)) scale(.7); animation:heart-rise var(--heart-duration) cubic-bezier(.2,.62,.3,1) var(--heart-delay) forwards; will-change:transform,opacity; }
 @keyframes heart-rise { 0%{opacity:0;transform:translate3d(0,20px,0) rotate(var(--heart-start-rotation)) scale(.7)} 16%{opacity:.92} 72%{opacity:.78} 100%{opacity:0;transform:translate3d(var(--heart-drift),var(--heart-rise),0) rotate(var(--heart-end-rotation)) scale(1.08)} }
+.watering-message { position:fixed; top:50%; left:50%; z-index:101; width:max-content; max-width:calc(100vw - 32px); padding:14px 22px; border:1px solid rgb(255 255 255/.14); border-radius:99px; color:#fff; background:rgb(8 9 8/.48); box-shadow:0 10px 35px #000a,0 0 24px rgb(255 255 255/.09); backdrop-filter:blur(9px); font:500 clamp(16px,2.1vw,24px)/1.3 Georgia,serif; letter-spacing:.01em; text-align:center; opacity:0; transform:translate(-50%,-42%) scale(.96); pointer-events:none; }
+.watering-message.show { animation:watering-message-show 3.4s ease-in-out forwards; }
+@keyframes watering-message-show { 0%{opacity:0;transform:translate(-50%,-38%) scale(.96)} 16%{opacity:1;transform:translate(-50%,-50%) scale(1)} 72%{opacity:1;transform:translate(-50%,-50%) scale(1)} 100%{opacity:0;transform:translate(-50%,-58%) scale(.98)} }
 @media(max-width:700px){.topbar{padding:17px}.test-switch>span{display:none}.scene{padding-inline:0}.bouquet{width:112vw;height:72vh;min-height:500px}.controls{flex-direction:column;gap:10px;margin-top:-8px}.status{min-width:0;width:92vw;border-top:1px solid var(--line);border-left:0}.status-title,.status-details{justify-content:center}.floor{height:25%}}
 @media(prefers-reduced-motion:reduce){.plant{animation:none}}
 
@@ -77,7 +80,7 @@ body { overflow-x:hidden; color:var(--text); font-family:Inter,"Segoe UI",sans-s
   .test-switch b{font-size:9px}
   .test-switch small{font-size:8px;white-space:nowrap}
   .scene{min-height:100svh;grid-template-rows:minmax(0,1fr) auto;padding:68px 8px 18px;overflow:hidden}
-  .bouquet{align-self:end;width:min(96vw,700px);height:min(66svh,81vw);min-height:0;max-height:620px;transform:none}
+  .bouquet{align-self:end;justify-self:start;left:50%;width:min(96vw,700px);height:min(66svh,81vw);min-height:0;max-height:620px;margin:0;transform:translateX(-50%)}
   .bouquet-svg{display:block;width:100%;height:100%;max-width:100%}
   .controls{width:min(96vw,620px);flex-direction:column;gap:10px;margin-top:0;padding-bottom:4px}
   #waterButton{min-width:180px;min-height:48px;padding:0 22px;font-size:13px;touch-action:manipulation}
@@ -86,6 +89,7 @@ body { overflow-x:hidden; color:var(--text); font-family:Inter,"Segoe UI",sans-s
   .status-details{gap:5px 14px;font-size:9px;line-height:1.45}
   .floor{height:21%}
   .heart-layer{width:100vw;height:100svh;max-width:100%;pointer-events:none}
+  .watering-message{max-width:calc(100vw - 28px);padding:12px 18px;font-size:clamp(15px,4.2vw,20px)}
   .toast{bottom:14px;width:max-content;max-width:calc(100vw - 24px);font-size:10px}
 }
 
@@ -97,7 +101,7 @@ body { overflow-x:hidden; color:var(--text); font-family:Inter,"Segoe UI",sans-s
   .test-switch>span{max-width:128px}.test-switch b{font-size:8px}.test-switch small{font-size:7px}
   .test-switch em{width:36px;height:20px;padding:3px}.test-switch em i{width:12px;height:12px}.test-switch input:checked+em i{transform:translateX(16px)}
   .scene{padding:58px 6px 12px}
-  .bouquet{width:100%;height:min(59svh,86vw);max-height:500px}
+  .bouquet{left:50%;width:100%;height:min(59svh,86vw);max-height:500px;margin:0;transform:translateX(-50%)}
   .controls{width:96vw;gap:8px}
   #waterButton{min-width:174px;min-height:46px;padding:0 18px;font-size:12px}
   .status{padding:8px 7px}
@@ -105,4 +109,5 @@ body { overflow-x:hidden; color:var(--text); font-family:Inter,"Segoe UI",sans-s
   .status-details{display:grid;grid-template-columns:1fr 1fr;gap:4px 8px;font-size:8px}
   .status-details span:last-child{grid-column:1/-1}
   .floor{height:23%}
+  .watering-message{width:calc(100vw - 30px);max-width:390px;padding:11px 13px;font-size:clamp(14px,4.4vw,18px);white-space:normal}
 }

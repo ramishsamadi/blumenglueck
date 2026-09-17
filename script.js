@@ -10,6 +10,7 @@ const ui={
   bouquet:document.querySelector("#bouquet"), arrangement:document.querySelector("#flowerArrangement"),
   fallLayer:document.querySelector("#fallLayer"), drops:document.querySelector("#waterDrops"),
   hearts:document.querySelector("#heartLayer"),
+  message:document.querySelector("#wateringMessage"),
   button:document.querySelector("#waterButton"), test:document.querySelector("#testMode"),
   status:document.querySelector("#statusText"), dot:document.querySelector("#statusDot"),
   water:document.querySelector("#waterLevel"), elapsed:document.querySelector("#elapsedPlantTime"),
@@ -289,6 +290,9 @@ function waterAnimation(){
 }
 function heartAnimation(){
   ui.hearts.replaceChildren();
+  ui.message.classList.remove("show");
+  void ui.message.offsetWidth;
+  ui.message.classList.add("show");
   const colors=["#e94b56","#f29ab2","#fffaf2","#b78bd1","#8ecde3"];
   for(let index=0;index<46;index++){
     const heart=document.createElement("span");
@@ -306,6 +310,7 @@ function heartAnimation(){
     ui.hearts.append(heart);
   }
   setTimeout(()=>ui.hearts.replaceChildren(),4500);
+  setTimeout(()=>ui.message.classList.remove("show"),3600);
 }
 function waterFlowers(){
   lastWatered=Date.now();localStorage.setItem(KEYS.last,String(lastWatered));
