@@ -316,7 +316,6 @@ function waterFlowers(){
   lastWatered=Date.now();localStorage.setItem(KEYS.last,String(lastWatered));
   plants.forEach(plant=>plant.node.classList.remove("leaf-one-lost","leaf-two-lost","head-lost"));
   fallGeneration++;ui.fallLayer.replaceChildren();nextFallAt=null;fallEventNumber=0;update();waterAnimation();heartAnimation();
-  clearTimeout(toastTimer);ui.toast.classList.add("show");toastTimer=setTimeout(()=>ui.toast.classList.remove("show"),2600);
 }
 
 buildBouquet();
