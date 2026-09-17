@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>Blumenglück</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><i></i> Blumenglück</div>
+    <label class="test-switch">
+      <span><b>TESTMODUS</b><small>1 Minute = 6 Stunden</small></span>
+      <input id="testMode" type="checkbox" role="switch">
+      <em><i></i></em>
+    </label>
+  </header>
+
+  <main class="scene">
+    <div class="studio-light" aria-hidden="true"></div>
+    <section id="bouquet" class="bouquet" aria-label="Blumenstrauß in einem schwarzen Eimer">
+      <svg class="bouquet-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" role="img" aria-labelledby="title description">
+        <title id="title">Strauß in einem schwarzen Eimer</title>
+        <desc id="description">Rosen, Tulpen, Pfingstrosen und weiße Füllblumen mit eigenen Stängeln und Blättern.</desc>
+        <defs>
+          <linearGradient id="stemGradient" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#26392d"/><stop offset=".16" stop-color="#61795a"/><stop offset=".34" stop-color="#9bab86"/><stop offset=".49" stop-color="#5d7555"/><stop offset=".78" stop-color="#354c39"/><stop offset="1" stop-color="#1e3026"/></linearGradient>
+          <linearGradient id="leafGradient" x1=".08" y1="0" x2=".92" y2="1"><stop stop-color="#a4b28e"/><stop offset=".18" stop-color="#78906d"/><stop offset=".43" stop-color="#536b52"/><stop offset=".72" stop-color="#344b3a"/><stop offset="1" stop-color="#1c3025"/></linearGradient>
+          <radialGradient id="roseGradient" cx="26%" cy="12%" r="94%"><stop stop-color="#ffd4cb"/><stop offset=".12" stop-color="#f3948d"/><stop offset=".32" stop-color="#d94f52"/><stop offset=".58" stop-color="#ad2635"/><stop offset=".8" stop-color="#791d2d"/><stop offset="1" stop-color="#421321"/></radialGradient>
+          <radialGradient id="roseInner" cx="30%" cy="17%" r="86%"><stop stop-color="#ffb5ad"/><stop offset=".3" stop-color="#dc4b50"/><stop offset=".65" stop-color="#9d2233"/><stop offset="1" stop-color="#581625"/></radialGradient>
+          <linearGradient id="tulipPinkGradient" x2="1" y2="1"><stop stop-color="#fff2ef"/><stop offset=".28" stop-color="#f2b9bd"/><stop offset=".65" stop-color="#d67887"/><stop offset="1" stop-color="#87475c"/></linearGradient>
+          <linearGradient id="tulipWhiteGradient" x2="1" y2="1"><stop stop-color="#fffff4"/><stop offset=".4" stop-color="#ebe7d9"/><stop offset=".78" stop-color="#bdb6aa"/><stop offset="1" stop-color="#79746f"/></linearGradient>
+          <radialGradient id="peonyGradient" cx="27%" cy="13%" r="94%"><stop stop-color="#fff8ef"/><stop offset=".22" stop-color="#f2cbc4"/><stop offset=".55" stop-color="#da949a"/><stop offset=".82" stop-color="#a65f70"/><stop offset="1" stop-color="#6c4054"/></radialGradient>
+          <radialGradient id="fillerGradient" cx="25%" cy="12%" r="92%"><stop stop-color="#fffff8"/><stop offset=".48" stop-color="#e9e7dc"/><stop offset="1" stop-color="#93968c"/></radialGradient>
+          <linearGradient id="tulipYellowGradient" x2="1" y2="1"><stop stop-color="#fff4bf"/><stop offset=".3" stop-color="#edcf69"/><stop offset=".68" stop-color="#ca973c"/><stop offset="1" stop-color="#765027"/></linearGradient>
+          <radialGradient id="orangeBloomGradient" cx="28%" cy="14%" r="92%"><stop stop-color="#ffe2ae"/><stop offset=".4" stop-color="#e99b4f"/><stop offset=".78" stop-color="#b66032"/><stop offset="1" stop-color="#713923"/></radialGradient>
+          <radialGradient id="purpleBloomGradient" cx="28%" cy="14%" r="92%"><stop stop-color="#eadcf1"/><stop offset=".4" stop-color="#b394c5"/><stop offset=".78" stop-color="#745888"/><stop offset="1" stop-color="#493953"/></radialGradient>
+          <radialGradient id="centerGradient"><stop stop-color="#f3d77c"/><stop offset=".55" stop-color="#bd9140"/><stop offset="1" stop-color="#654b24"/></radialGradient>
+          <linearGradient id="bucketGradient" x1="0" x2="1"><stop stop-color="#090a0a"/><stop offset=".25" stop-color="#303332"/><stop offset=".48" stop-color="#171918"/><stop offset=".8" stop-color="#292b2a"/><stop offset="1" stop-color="#050606"/></linearGradient>
+          <filter id="petalShadow" x="-55%" y="-55%" width="220%" height="230%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency=".018 .034" numOctaves="2" seed="11" result="petalNoise"/>
+            <feDisplacementMap in="SourceGraphic" in2="petalNoise" scale="1.35" xChannelSelector="R" yChannelSelector="G" result="organicShape"/>
+            <feSpecularLighting in="petalNoise" surfaceScale="1.8" specularConstant=".2" specularExponent="22" lighting-color="#fff" result="surfaceLight"><feDistantLight azimuth="225" elevation="55"/></feSpecularLighting>
+            <feComposite in="surfaceLight" in2="SourceAlpha" operator="in" result="clippedLight"/>
+            <feBlend in="organicShape" in2="clippedLight" mode="screen" result="litPetal"/>
+            <feDropShadow in="litPetal" dx="1.5" dy="3" stdDeviation="2.1" style="flood-color:#160d12;flood-opacity:.48" result="contactShadow"/>
+            <feDropShadow in="contactShadow" dx="5" dy="9" stdDeviation="7" style="flood-color:#000;flood-opacity:.62"/>
+          </filter>
+          <filter id="leafSurface" x="-30%" y="-50%" width="170%" height="200%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".028 .08" numOctaves="2" seed="7" result="leafNoise"/><feDisplacementMap in="SourceGraphic" in2="leafNoise" scale=".85" result="leafEdge"/><feDropShadow in="leafEdge" dx="2" dy="4" stdDeviation="2.5" style="flood-color:#000;flood-opacity:.5"/></filter>
+          <filter id="bucketShadow" x="-40%" y="-40%" width="180%" height="200%"><feDropShadow dx="0" dy="16" stdDeviation="14" style="flood-color:#000;flood-opacity:.9"/></filter>
+
+          <g id="leafShape"><path d="M0 1C13-21 34-36 57-35 69-34 82-24 90-11 74 8 52 23 30 22 18 21 8 12 0 1Z" fill="url(#leafGradient)"/><path d="M3 1C28-1 57-7 84-12" fill="none" stroke="#d7dbc4" stroke-opacity=".48" stroke-width="1.35"/><path d="M20-1L35-17M33-3L49-23M48-6L62-26M62-9L74-24M26 1L42 13M42-3L58 10M57-7L72 2" fill="none" stroke="#bac5aa" stroke-opacity=".32" stroke-width=".9"/><path d="M8-2C30-24 56-31 78-18" fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="4"/></g>
+
+          <g id="rose" filter="url(#petalShadow)">
+            <g class="petal outer"><path d="M-5 8C-63 38-82-17-48-49-19-75 8-36-5 8Z"/><path d="M-4 7C-34-50 10-77 43-50 72-26 43 13-4 7Z"/><path d="M1 7C48-40 82-6 65 35 51 68 13 53 1 7Z"/><path d="M0 9C28 59-20 82-57 53-83 31-54-2 0 9Z"/></g>
+            <path class="petal" d="M-2 6C-54 2-61-43-28-61 4-77 23-35-2 6Z" fill="url(#roseGradient)" opacity=".94"/>
+            <g class="petal middle"><path d="M-5 5C-45 11-48-32-18-46 10-55 22-18-5 5Z"/><path d="M-2 5C3-38 42-43 53-13 61 15 27 31-2 5Z"/><path d="M-3 7C32 18 19 53-13 51-43 49-41 17-3 7Z"/><path d="M-4 2C-30-24-1-51 24-38 45-26 28 6-4 2Z"/></g>
+            <g class="petal inner"><path d="M-3 2C-26-1-25-27-7-34 13-39 20-13-3 2Z"/><path d="M-1 3C8-24 35-18 35 5 33 25 10 26-1 3Z"/><path d="M-2 4C15 22-9 37-26 24-41 12-27-6-2 4Z"/><path d="M-5 0C-5-17 16-23 23-8 29 5 10 15-5 0Z"/></g><path d="M-9 1C-5-14 14-17 19-3 23 9 4 17-9 1Z" fill="#a24d61"/><path d="M-23-31C-8-43 3-41 11-31M18-22C29-12 27-2 18 7M-31 17C-16 27-5 26 5 19" fill="none" stroke="#fff5f2" stroke-opacity=".24" stroke-width="2.2" stroke-linecap="round"/>
+          </g>
+          <g id="roseBud" filter="url(#petalShadow)"><path d="M0 23C-31 11-37-31-13-63 10-55 22-21 0 23Z" fill="url(#roseGradient)"/><path d="M0 23C29 12 36-29 15-61-8-52-20-18 0 23Z" fill="url(#roseGradient)"/><path d="M0 18C-15-11-7-47 2-69 19-42 19-8 0 18Z" fill="url(#roseInner)"/><path d="M-12-36C-3-46 8-47 14-35" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="2"/><path d="M-20 18Q0 36 20 17" fill="#607557"/><path d="M-19 18L-28 6 0 28 28 5 20 18" fill="#718266" opacity=".72"/></g>
+          <g id="roseHalf" filter="url(#petalShadow)"><g class="petal outer"><path d="M-3 9C-48 28-61-17-34-43-11-62 8-29-3 9Z"/><path d="M-2 8C-22-42 14-62 40-37 58-17 34 15-2 8Z"/><path d="M0 8C39-26 64 4 48 34 34 56 7 42 0 8Z"/></g><g class="petal middle"><path d="M-4 4C-34 7-35-27-13-39 9-47 18-14-4 4Z"/><path d="M-1 4C5-31 35-33 42-8 48 14 20 25-1 4Z"/><path d="M-2 6C25 14 14 41-10 40-34 38-33 14-2 6Z"/></g><g class="petal inner"><path d="M-3 2C-21-1-20-22-5-28 11-31 16-10-3 2Z"/><path d="M-1 3C7-18 28-14 29 4 27 21 9 21-1 3Z"/><path d="M-2 4C11 18-8 29-21 20-33 9-22-5-2 4Z"/></g><path d="M-17-27C-6-37 7-36 14-26M17-14C26-5 23 5 16 10" fill="none" stroke="#fff4ee" stroke-opacity=".25" stroke-width="1.8"/></g>
+          <g id="tulipPink" filter="url(#petalShadow)"><path d="M0 22C-34 12-45-31-27-67-5-52 6-29 0 22Z" fill="url(#tulipPinkGradient)"/><path d="M0 22C31 11 45-29 29-65 7-50-5-22 0 22Z" fill="url(#tulipPinkGradient)"/><path d="M0 20C-26-5-18-49 2-77 24-49 30-8 0 20Z" fill="url(#tulipPinkGradient)"/><path d="M-22-31C-9-21 10-19 26-34M-9-55C-3-42 0-19 0 9" fill="none" stroke="#fff" stroke-opacity=".27" stroke-width="2"/></g>
+          <g id="tulipWhite" filter="url(#petalShadow)"><path d="M0 22C-33 12-44-30-26-65-5-51 6-28 0 22Z" fill="url(#tulipWhiteGradient)"/><path d="M0 22C30 11 44-28 28-64 7-49-5-21 0 22Z" fill="url(#tulipWhiteGradient)"/><path d="M0 20C-25-5-18-47 2-75 23-47 29-7 0 20Z" fill="url(#tulipWhiteGradient)"/><path d="M-21-30C-7-20 10-19 25-33M-8-53C-2-39 0-16 0 9" fill="none" stroke="#fff" stroke-opacity=".46" stroke-width="2"/></g>
+          <g id="tulipYellow" filter="url(#petalShadow)"><path d="M0 22C-34 12-45-31-27-67-5-52 6-29 0 22Z" fill="url(#tulipYellowGradient)"/><path d="M0 22C31 11 45-29 29-65 7-50-5-22 0 22Z" fill="url(#tulipYellowGradient)"/><path d="M0 20C-26-5-18-49 2-77 24-49 30-8 0 20Z" fill="url(#tulipYellowGradient)"/><path d="M-22-31C-8-20 10-19 26-34M-9-55C-3-41 0-18 0 9" fill="none" stroke="#fff9d8" stroke-opacity=".4" stroke-width="2"/></g>
+          <g id="peony" filter="url(#petalShadow)">
+            <g class="petal peony"><path d="M0 7C-72 44-87-24-51-59-21-84 8-40 0 7Z"/><path d="M-2 4C-45-50-6-86 32-68 73-48 52-6-2 4Z"/><path d="M0 6C30-68 81-51 81-6 81 38 40 49 0 6Z"/><path d="M1 8C75-2 77 55 35 70 1 83-12 42 1 8Z"/><path d="M-1 10C10 77-47 81-70 45-90 14-53-8-1 10Z"/><path d="M-3 5C-71 4-66-48-27-67 9-82 24-35-3 5Z"/></g>
+            <g class="petal peony-inner"><path d="M-5 3C-44-16-23-59 11-50 37-41 23-6-5 3Z"/><path d="M0 4C12-46 53-34 54-3 54 25 21 30 0 4Z"/><path d="M-2 6C39 13 27 52-4 53-35 54-33 20-2 6Z"/><path d="M-4 4C-13-29 20-39 35-14 47 7 19 26-4 4Z"/><path d="M-6 1C-26-23 2-47 24-32 42-18 24 9-6 1Z"/></g><path d="M-39-40C-20-55-2-53 10-43M24-31C39-18 39-2 29 12M-42 27C-24 41-8 39 4 29" fill="none" stroke="#fffaf4" stroke-opacity=".22" stroke-width="2.4" stroke-linecap="round"/><g fill="#e4b071"><circle cx="-8" cy="2" r="2.4"/><circle cx="2" cy="-5" r="2"/><circle cx="10" cy="4" r="2.2"/><circle cx="-1" cy="10" r="1.8"/><circle cx="-13" cy="-6" r="1.7"/></g>
+          </g>
+          <g id="fillBlossom"><g class="petal filler"><path d="M0 0C-15-5-16-20-5-24 5-21 6-9 0 0Z"/><path d="M0 0C5-17 20-15 23-4 19 7 8 6 0 0Z"/><path d="M0 0C17 6 13 20 1 22-8 17-6 7 0 0Z"/><path d="M0 0C-7 15-22 10-22-2-16-10-7-6 0 0Z"/><path d="M-1 0C-12-13-2-27 10-22 18-14 10-3-1 0Z"/></g><circle r="5.5" fill="url(#centerGradient)"/><g stroke="#f5d986" stroke-width="1"><path d="M0-3V-10M3-2l7-5M-3-2l-7-5"/></g></g>
+          <g id="filler" filter="url(#petalShadow)"><path d="M0 28C-2 9-18-4-34-14M0 28C5 8 21-7 38-19M0 28C1 5-3-14 4-36" fill="none" stroke="#718267" stroke-width="3"/><g transform="translate(-36 -15)"><use href="#fillBlossom"/></g><g transform="translate(39 -20) scale(.9)"><use href="#fillBlossom"/></g><g transform="translate(4 -38) scale(.82)"><use href="#fillBlossom"/></g></g>
+          <g id="daisy" filter="url(#petalShadow)"><g fill="url(#fillerGradient)"><path d="M0 0C-13-20-8-46 4-51 16-40 12-15 0 0Z"/><path d="M1 1C12-22 35-31 43-20 42-6 19 6 1 1Z"/><path d="M2 3C25 0 43 17 37 29 23 36 5 21 2 3Z"/><path d="M0 4C14 23 7 46-6 48-19 37-13 13 0 4Z"/><path d="M-2 3C-22 20-45 12-46-2-37-15-13-10-2 3Z"/><path d="M-2 0C-28-4-37-25-27-34-13-35 0-16-2 0Z"/><path d="M-1 1C-20-15-13-38 1-42 13-34 10-12-1 1Z" opacity=".84"/><path d="M1 2C19-13 38-3 37 11 28 22 10 15 1 2Z" opacity=".84"/></g><g fill="none" stroke="#fff" stroke-opacity=".32" stroke-width="1.4"><path d="M2-5L4-40M6 2L34 12M-6 2L-37-2"/></g><circle r="14" fill="url(#centerGradient)"/><g fill="#f5db83"><circle cx="-5" cy="-4" r="1.6"/><circle cx="4" cy="-5" r="1.5"/><circle cx="6" cy="3" r="1.7"/><circle cx="-3" cy="6" r="1.5"/><circle cx="0" cy="1" r="1.8"/><circle cx="-8" cy="3" r="1.4"/></g></g>
+          <g id="smallOrange" filter="url(#petalShadow)"><g fill="url(#orangeBloomGradient)"><path d="M0 2C-24 7-34-13-21-29-5-38 5-18 0 2Z"/><path d="M0 2C-8-23 9-38 27-27 39-12 20 5 0 2Z"/><path d="M1 3C25-7 38 10 28 28 14 40-2 22 1 3Z"/><path d="M-1 3C10 25-8 39-25 28-38 14-20-3-1 3Z"/><path d="M-1 1C-16-14-4-32 12-26 23-16 14 0-1 1Z"/></g><path d="M-15-15C-5-22 5-21 12-14" fill="none" stroke="#fff0d0" stroke-opacity=".3" stroke-width="1.6"/><circle r="8" fill="#6f4225"/><g fill="#d59c50"><circle cx="-3" cy="-2" r="1.2"/><circle cx="3" cy="-2" r="1.2"/><circle cy="3" r="1.2"/></g></g>
+          <g id="smallPurple" filter="url(#petalShadow)"><g fill="url(#purpleBloomGradient)"><path d="M0 2C-24 7-34-13-21-29-5-38 5-18 0 2Z"/><path d="M0 2C-8-23 9-38 27-27 39-12 20 5 0 2Z"/><path d="M1 3C25-7 38 10 28 28 14 40-2 22 1 3Z"/><path d="M-1 3C10 25-8 39-25 28-38 14-20-3-1 3Z"/><path d="M-1 1C-16-14-4-32 12-26 23-16 14 0-1 1Z"/></g><path d="M-15-15C-5-22 5-21 12-14" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.6"/><circle r="8" fill="#d0ad62"/><g fill="#f0d180"><circle cx="-3" cy="-2" r="1.2"/><circle cx="3" cy="-2" r="1.2"/><circle cy="3" r="1.2"/></g></g>
+        </defs>
+
+        <!-- Hintere Öffnung: liegt hinter den Stängeln. -->
+        <g class="bucket bucket-back" filter="url(#bucketShadow)">
+          <ellipse cx="450" cy="608" rx="111" ry="25" fill="#090b0a" stroke="#4c524f" stroke-width="3"/>
+          <ellipse cx="450" cy="609" rx="103" ry="18" fill="#111a14"/>
+          <ellipse cx="450" cy="612" rx="92" ry="12" fill="#050706" opacity=".82"/>
+          <path d="M341 607Q450 570 559 607" fill="none" stroke="#5b625e" stroke-width="5" stroke-linecap="round"/>
+          <path d="M348 606Q450 577 552 606" fill="none" stroke="#a0aaa3" stroke-opacity=".24" stroke-width="2"/>
+        </g>
+
+        <!-- Die Stängel liegen zwischen hinterem und vorderem Bucket-Rand. -->
+        <g id="flowerArrangement"></g>
+
+        <!-- Körper und vorderer Rand verdecken die unteren Stängelenden. -->
+        <g class="bucket bucket-front" filter="url(#bucketShadow)">
+          <path d="M341 608L364 745Q450 770 536 745L559 608Q450 638 341 608Z" fill="url(#bucketGradient)" stroke="#454a47" stroke-width="3"/>
+          <path d="M341 607Q450 647 559 607L556 622Q450 653 344 622Z" fill="#151917" stroke="#555c58" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M346 608Q450 644 554 608" fill="none" stroke="#b3bbb6" stroke-opacity=".34" stroke-width="2.2"/>
+          <path d="M374 637L389 723" stroke="#aeb6b0" stroke-opacity=".15" stroke-width="10" stroke-linecap="round"/>
+          <path d="M347 637C300 642 302 722 363 728M553 637C600 642 598 722 537 728" fill="none" stroke="#555b57" stroke-width="7"/>
+        </g>
+      </svg>
+      <div id="fallLayer" class="fall-layer" aria-hidden="true"></div>
+      <div id="waterDrops" class="water-drops" aria-hidden="true"></div>
+    </section>
+
+    <section class="controls">
+      <button id="waterButton" type="button"><span>⌁</span> Blumen gießen</button>
+      <div class="status" aria-live="polite">
+        <div class="status-title"><i id="statusDot"></i><strong id="statusText">Gesund</strong></div>
+        <div class="status-details"><span>Wasserstand <b id="waterLevel">100 %</b></span><span>Zeit ohne Wasser <b id="elapsedPlantTime">0 Stunden</b></span><span>Letztes Gießen <b id="lastWatered">gerade eben</b></span></div>
+      </div>
+    </section>
+    <div class="floor" aria-hidden="true"><div></div></div>
+  </main>
+  <div id="heartLayer" class="heart-layer" aria-hidden="true"></div>
+  <div id="toast" class="toast" role="status">Die Pflanzen nehmen langsam Wasser auf.</div>
+  <script src="script.js"></script>
+</body>
+</html>

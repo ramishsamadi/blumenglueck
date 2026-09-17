@@ -1,0 +1,108 @@
+@property --wilt { syntax:"<number>"; inherits:true; initial-value:0; }
+:root { color-scheme:dark; --text:#eeeeea; --muted:#888b87; --line:rgb(255 255 255/.13); }
+* { box-sizing:border-box; }
+html,body { min-width:320px; min-height:100%; margin:0; background:#000; }
+body { overflow-x:hidden; color:var(--text); font-family:Inter,"Segoe UI",sans-serif; }
+.topbar { position:fixed; inset:0 0 auto; z-index:50; display:flex; justify-content:space-between; align-items:center; padding:23px clamp(20px,4vw,60px); }
+.brand { display:flex; align-items:center; gap:9px; font:17px Georgia,serif; color:#dddeda; }
+.brand>i { width:8px; height:8px; border-radius:60% 0 60% 60%; background:#91a486; transform:rotate(-35deg); }
+.test-switch { display:flex; align-items:center; gap:12px; cursor:pointer; }
+.test-switch span { text-align:right; }.test-switch b,.test-switch small { display:block; }
+.test-switch b { font-size:10px; letter-spacing:.08em; }.test-switch small { margin-top:3px; color:#777a76; font-size:9px; }
+.test-switch input { position:absolute; opacity:0; pointer-events:none; }
+.test-switch em { width:40px; height:22px; padding:3px; border:1px solid #3d403d; border-radius:20px; background:#161816; transition:.35s; }
+.test-switch em i { display:block; width:14px; height:14px; border-radius:50%; background:#747973; transition:.35s; }
+.test-switch input:checked+em { border-color:#71806d; background:#293128; }.test-switch input:checked+em i { background:#d4d9cc; transform:translateX(18px); }
+.scene { position:relative; min-height:100vh; display:grid; grid-template-rows:1fr auto; justify-items:center; padding:60px 12px 34px; overflow:hidden; isolation:isolate; }
+.studio-light { position:absolute; top:-30%; left:50%; z-index:-2; width:min(1050px,100vw); height:90%; border-radius:50%; background:radial-gradient(ellipse at 50% 10%,rgb(255 248 225/.18),rgb(193 191 173/.055) 42%,transparent 72%); filter:blur(25px); transform:translateX(-50%); }
+.floor { position:absolute; right:0; bottom:0; left:0; z-index:-1; height:22%; border-top:1px solid rgb(255 255 255/.075); background:linear-gradient(#111212,#050505 24%,#000); perspective:500px; }
+.floor::before { content:""; position:absolute; top:-1px; left:50%; width:min(850px,90vw); height:75px; background:radial-gradient(ellipse at center top,rgb(203 210 201/.11),transparent 67%); transform:translateX(-50%); filter:blur(8px); }
+.floor div { position:absolute; top:35%; left:50%; width:min(560px,72vw); height:70px; border-radius:50%; background:#000; filter:blur(17px); transform:translateX(-50%); opacity:.9; }
+.bouquet { --wilt:0; --sat:1.14; --light:1.08; position:relative; align-self:end; width:min(940px,96vw); height:min(80vh,780px); min-height:540px; filter:saturate(var(--sat)) brightness(var(--light)); transition:--wilt 6s cubic-bezier(.2,.7,.25,1),filter 6s ease; }
+.bouquet-svg { width:100%; height:100%; overflow:visible; }
+.depth.back { opacity:.8; filter:brightness(.84); }.depth.middle { filter:brightness(.95); }.depth.front { filter:brightness(1.03); }
+.stem { fill:none; stroke:url(#stemGradient); stroke-width:7; stroke-linecap:round; vector-effect:non-scaling-stroke; filter:drop-shadow(1px 2px 1px #0008); }.stem.thin{stroke-width:4.5}.stem.heavy{stroke-width:9}
+#rose .outer path,#rose .middle path,#roseHalf .outer path,#roseHalf .middle path { fill:url(#roseGradient); } #rose .inner path,#roseHalf .inner path { fill:url(#roseInner); }
+#peony .peony path,#peony .peony-inner path { fill:url(#peonyGradient); } #fillBlossom .filler path { fill:url(#fillerGradient); }
+.petal path { stroke:#fff; stroke-opacity:.075; stroke-width:.65; stroke-linejoin:round; }
+#rose .middle path,#rose .inner path,#roseHalf .middle path,#roseHalf .inner path,#peony .peony-inner path { filter:drop-shadow(1.5px 2.5px 1.8px rgb(45 16 28/.34)); }
+#daisy>g:first-child path,#fillBlossom .filler path { filter:drop-shadow(1px 2px 1px rgb(45 39 30/.24)); }
+.depth .plant:nth-child(3n) .flower-head>use { transform-box:fill-box; transform-origin:center; rotate:-2.4deg; scale:.975 1.025; }
+.depth .plant:nth-child(4n) .flower-head>use { transform-box:fill-box; transform-origin:center; rotate:2.8deg; scale:1.025 .98; }
+.depth .plant:nth-child(7n) .flower-head>use { transform-box:fill-box; transform-origin:center; rotate:-1.6deg; scale:.96 1.035; }
+.flower-head.tone-red { filter:hue-rotate(-17deg) saturate(1.2) brightness(.94); }
+.flower-head.tone-cream { filter:sepia(.22) saturate(.72) brightness(1.12); }
+.falling-piece.tone-red,.fallen-piece.tone-red { filter:hue-rotate(-17deg) saturate(1.2) brightness(.94) drop-shadow(3px 7px 5px #000c); }
+.falling-piece.tone-cream,.fallen-piece.tone-cream { filter:sepia(.22) saturate(.72) brightness(1.12) drop-shadow(3px 7px 5px #000c); }
+.flower-head.tone-pink { filter:hue-rotate(14deg) saturate(.72) brightness(1.18); }
+.flower-head.tone-white { filter:saturate(.18) brightness(1.55); }
+.flower-head.tone-purple { filter:hue-rotate(245deg) saturate(.66) brightness(1.12); }
+.falling-piece.tone-pink,.fallen-piece.tone-pink { filter:hue-rotate(14deg) saturate(.72) brightness(1.18) drop-shadow(3px 7px 5px #000c); }
+.falling-piece.tone-white,.fallen-piece.tone-white { filter:saturate(.18) brightness(1.55) drop-shadow(3px 7px 5px #000c); }
+.falling-piece.tone-purple,.fallen-piece.tone-purple { filter:hue-rotate(245deg) saturate(.66) brightness(1.12) drop-shadow(3px 7px 5px #000c); }
+.plant { transform-box:view-box; transform-origin:50% 100%; animation:breeze var(--speed) ease-in-out var(--delay) infinite alternate; }
+.plant-body { transform-box:fill-box; transform-origin:50% 100%; transform:rotate(calc(var(--stem-wilt)*var(--bend))); transition:transform 6s cubic-bezier(.2,.7,.25,1); }
+.flower-head { transform-box:fill-box; transform-origin:50% 100%; rotate:calc(var(--head-wilt)*var(--head-bend)); opacity:1; transition:rotate 6s ease,opacity 1.2s; }
+.plant.head-lost .flower-head { opacity:0; }
+.leaf { transform-box:fill-box; transform-origin:0 50%; rotate:calc(var(--leaf-wilt)*var(--leaf-drop)); opacity:calc(1 - var(--leaf-wilt)*.25); filter:url(#leafSurface); transition:rotate 5s ease,opacity 1.2s; }
+.plant.leaf-one-lost .leaf-one,.plant.leaf-two-lost .leaf-two { opacity:0; }
+.petal { transform-box:fill-box; transform-origin:center bottom; scale:1 calc(1 - var(--head-wilt)*.17); transition:scale 5s ease; }
+@keyframes breeze { from{translate:-1.2px 0} to{translate:1.2px 2px} }
+.bucket { pointer-events:none; }
+.fall-layer { position:absolute; inset:0; z-index:20; overflow:visible; pointer-events:none; }
+.fallen-piece { position:absolute; left:var(--x); top:var(--y); width:var(--size); height:var(--size); overflow:visible; filter:drop-shadow(3px 7px 5px #000c); transform:rotate(var(--rotation)) scaleY(.62); opacity:.78; }
+.falling-piece { position:absolute; left:var(--start-x); top:var(--start-y); width:var(--size); height:var(--size); overflow:visible; opacity:0; filter:drop-shadow(3px 7px 5px #000b); animation:fall-down var(--fall-duration) cubic-bezier(.3,.05,.72,1) forwards; }
+@keyframes fall-down { 0%{opacity:.9;translate:0 0;rotate:0} 32%{translate:18px 130px;rotate:95deg} 67%{translate:-12px 300px;rotate:235deg} 100%{opacity:.78;translate:var(--drift) var(--fall-distance);rotate:390deg} }
+.water-drops { position:absolute; inset:0; z-index:25; pointer-events:none; }.drop { position:absolute; top:12%; width:var(--size); height:calc(var(--size)*1.45); border-radius:60% 40% 62% 38%; background:linear-gradient(135deg,#e5f8fa 0 12%,#76aeb5 38%,#315a61); box-shadow:inset 1px 1px #fff9; opacity:0; transform:rotate(42deg); animation:waterDrop var(--time) ease-in var(--delay) forwards; }
+@keyframes waterDrop { 0%{opacity:0;translate:0 -20px} 18%{opacity:.85} 100%{opacity:0;translate:var(--drift) 470px} }
+.controls { position:relative; z-index:30; width:min(720px,94vw); display:flex; justify-content:center; align-items:center; gap:25px; margin-top:-22px; }
+#waterButton { flex:none; min-height:44px; padding:0 20px; border:1px solid rgb(255 255 255/.22); border-radius:99px; color:#e8e9e4; background:rgb(255 255 255/.08); box-shadow:inset 0 1px #fff2,0 12px 30px #0008; backdrop-filter:blur(13px); font-size:12px; font-weight:650; cursor:pointer; transition:.25s; }
+#waterButton:hover { background:rgb(255 255 255/.13); border-color:#ffffff66; } #waterButton:active{transform:scale(.97)} #waterButton span{margin-right:7px;font-size:18px;color:#bad0d1}
+.status { min-width:430px; padding:11px 16px; border-left:1px solid var(--line); }.status-title{display:flex;align-items:center;gap:8px;font:17px Georgia,serif}.status-title i{width:6px;height:6px;border-radius:50%;background:#91aa84;box-shadow:0 0 0 3px #91aa841c}.status-details{display:flex;flex-wrap:wrap;gap:5px 18px;margin-top:7px;color:#737671;font-size:9px;letter-spacing:.03em}.status-details b{color:#b8bab4;font-weight:550}
+.toast { position:fixed; left:50%; bottom:25px; z-index:60; padding:10px 16px; border:1px solid var(--line); border-radius:99px; color:#c9cbc5; background:#151715df; backdrop-filter:blur(12px); font-size:11px; opacity:0; transform:translate(-50%,15px); pointer-events:none; transition:.4s; }.toast.show{opacity:1;transform:translate(-50%,0)}
+.heart-layer { position:fixed; inset:0; z-index:100; overflow:hidden; pointer-events:none; }
+.watering-heart { position:absolute; left:var(--heart-x); top:var(--heart-y); color:var(--heart-color); font-size:var(--heart-size); line-height:1; opacity:0; filter:drop-shadow(0 3px 5px #0008); transform:translate3d(0,20px,0) rotate(var(--heart-start-rotation)) scale(.7); animation:heart-rise var(--heart-duration) cubic-bezier(.2,.62,.3,1) var(--heart-delay) forwards; will-change:transform,opacity; }
+@keyframes heart-rise { 0%{opacity:0;transform:translate3d(0,20px,0) rotate(var(--heart-start-rotation)) scale(.7)} 16%{opacity:.92} 72%{opacity:.78} 100%{opacity:0;transform:translate3d(var(--heart-drift),var(--heart-rise),0) rotate(var(--heart-end-rotation)) scale(1.08)} }
+@media(max-width:700px){.topbar{padding:17px}.test-switch>span{display:none}.scene{padding-inline:0}.bouquet{width:112vw;height:72vh;min-height:500px}.controls{flex-direction:column;gap:10px;margin-top:-8px}.status{min-width:0;width:92vw;border-top:1px solid var(--line);border-left:0}.status-title,.status-details{justify-content:center}.floor{height:25%}}
+@media(prefers-reduced-motion:reduce){.plant{animation:none}}
+
+/* Tablet und Smartphone: Die komplette SVG-Installation skaliert als Einheit.
+   Dadurch bleiben Bucket, Stängel und Blüten immer korrekt zueinander positioniert. */
+@media (max-width:768px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .topbar{padding:16px clamp(14px,4vw,24px);gap:14px}
+  .brand{flex:none;font-size:15px}
+  .test-switch{gap:8px;min-width:0}
+  .test-switch>span{display:block;min-width:0}
+  .test-switch b{font-size:9px}
+  .test-switch small{font-size:8px;white-space:nowrap}
+  .scene{min-height:100svh;grid-template-rows:minmax(0,1fr) auto;padding:68px 8px 18px;overflow:hidden}
+  .bouquet{align-self:end;width:min(96vw,700px);height:min(66svh,81vw);min-height:0;max-height:620px;transform:none}
+  .bouquet-svg{display:block;width:100%;height:100%;max-width:100%}
+  .controls{width:min(96vw,620px);flex-direction:column;gap:10px;margin-top:0;padding-bottom:4px}
+  #waterButton{min-width:180px;min-height:48px;padding:0 22px;font-size:13px;touch-action:manipulation}
+  .status{width:100%;min-width:0;padding:10px 12px;border-top:1px solid var(--line);border-left:0;text-align:center;background:rgb(0 0 0/.18);border-radius:12px}
+  .status-title,.status-details{justify-content:center}
+  .status-details{gap:5px 14px;font-size:9px;line-height:1.45}
+  .floor{height:21%}
+  .heart-layer{width:100vw;height:100svh;max-width:100%;pointer-events:none}
+  .toast{bottom:14px;width:max-content;max-width:calc(100vw - 24px);font-size:10px}
+}
+
+/* Kleine Smartphones: kompaktere Typografie und eine niedrigere Blumenfläche,
+   damit Bedienung und Status ohne Überlappung im sichtbaren Bereich bleiben. */
+@media (max-width:480px){
+  .topbar{padding:12px 12px 8px}
+  .brand{font-size:14px}.brand>i{width:7px;height:7px}
+  .test-switch>span{max-width:128px}.test-switch b{font-size:8px}.test-switch small{font-size:7px}
+  .test-switch em{width:36px;height:20px;padding:3px}.test-switch em i{width:12px;height:12px}.test-switch input:checked+em i{transform:translateX(16px)}
+  .scene{padding:58px 6px 12px}
+  .bouquet{width:100%;height:min(59svh,86vw);max-height:500px}
+  .controls{width:96vw;gap:8px}
+  #waterButton{min-width:174px;min-height:46px;padding:0 18px;font-size:12px}
+  .status{padding:8px 7px}
+  .status-title{font-size:15px}
+  .status-details{display:grid;grid-template-columns:1fr 1fr;gap:4px 8px;font-size:8px}
+  .status-details span:last-child{grid-column:1/-1}
+  .floor{height:23%}
+}
